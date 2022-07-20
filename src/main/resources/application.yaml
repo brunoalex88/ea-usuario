@@ -1,0 +1,31 @@
+server:
+  port: 8087
+  servlet:
+    context-path: '/ea-usuario/'
+
+spring:
+  application:
+    name: ea-usuario
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ea-usuario
+    username: ea-app
+    password: alsk
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non_contextual_creation: true
+    properties:
+      hibernate:
+        show_sql: true
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    com.estacioneaqui: trace
+    root: info
+    org.springframework.web: debug
+    org.hibernate: info
