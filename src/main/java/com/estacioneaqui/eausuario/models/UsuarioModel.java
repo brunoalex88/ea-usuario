@@ -1,36 +1,44 @@
 package com.estacioneaqui.eausuario.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Data
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "TB_USUARIO")
 public class UsuarioModel {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "nome", nullable = false, length = 150)
+    @Column(nullable = false, length = 150)
     private String nome;
 
-    @Column(name = "email", nullable = false, length = 50)
+    @Column(nullable = false, length = 20)
+    private String usuario;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String senha;
+
+    @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(name = "cpf", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String cpf;
 
-    @Column(name = "telefone", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String telefone;
 
-    @Column(name = "data_cadastro", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime dataCadastro;
 
-    @Column(name = "data_alteracao", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime dataAlteracao;
 
 }
