@@ -12,5 +12,5 @@ public interface UsuarioService {
     boolean existsByUsuario(String nome);
     List<UsuarioModel> buscarTodos();
     Optional<UsuarioModel> buscarPorId(UUID idUsuario);
-
+    void excluir(UUID idUsuario);
 }

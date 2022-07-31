@@ -36,4 +36,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         return this.usuarioRepository.findById(idUsuario);
     }
 
+    @Override
+    public void excluir(UUID idUsuario) {
+        this.usuarioRepository.deleteById(idUsuario);
+    }
+
 }

@@ -63,4 +63,15 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioModel);
     }
 
+    @DeleteMapping("/{idUsuario}")
+    public ResponseEntity<Object> excluirUsuario(@PathVariable UUID idUsuario) {
+        Optional<UsuarioModel> usuarioModelOpttional = this.usuarioService.buscarPorId(idUsuario);
+        if (usuarioModelOpttional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado!");
+        } else {
+            this.usuarioService.excluir(idUsuario);
+            return ResponseEntity.ok("Usuário excluído com sucesso!");
+        }
+    }
+
 }
