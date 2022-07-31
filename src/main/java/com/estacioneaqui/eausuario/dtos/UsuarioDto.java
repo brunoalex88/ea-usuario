@@ -1,6 +1,7 @@
 package com.estacioneaqui.eausuario.dtos;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
 public class UsuarioDto {
 
     public interface UsuarioView {
