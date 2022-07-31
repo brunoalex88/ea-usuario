@@ -15,8 +15,8 @@ public class UsuarioDto {
         interface UsuarioPut {}
     }
 
-    @NotBlank
-    @Size(min = 4, max = 150)
+    @NotBlank(groups = UsuarioView.UsuarioPut.class)
+    @Size(min = 4, max = 150, groups = UsuarioView.UsuarioPut.class)
     @JsonView(UsuarioView.UsuarioPut.class)
     private String nome;
 
@@ -28,8 +28,8 @@ public class UsuarioDto {
     @Size(min = 6)
     private String senha;
 
-    @Email
-    @NotBlank
+    @Email(groups = UsuarioView.UsuarioPut.class)
+    @NotBlank(groups = UsuarioView.UsuarioPut.class)
     @JsonView(UsuarioView.UsuarioPut.class)
     private String email;
 
