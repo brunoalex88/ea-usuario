@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -15,8 +17,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UsuarioModel salvar(UsuarioModel usuario) {
-        return this.usuarioRepository.save(usuario);
+    public void salvar(UsuarioModel usuario) {
+        this.usuarioRepository.save(usuario);
     }
 
     @Override
@@ -27,6 +29,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public List<UsuarioModel> buscarTodos() {
         return this.usuarioRepository.findAll();
+    }
+
+    @Override
+    public Optional<UsuarioModel> buscarPorId(UUID idUsuario) {
+        return this.usuarioRepository.findById(idUsuario);
     }
 
 }

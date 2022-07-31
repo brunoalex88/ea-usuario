@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/usuario")
@@ -37,6 +38,11 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<Object> buscarTodos() {
         return ResponseEntity.ok(this.usuarioService.buscarTodos());
+    }
+
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity<Object> buscarPorId(@PathVariable("idUsuario") UUID idUsuario) {
+        return ResponseEntity.ok(this.usuarioService.buscarPorId(idUsuario));
     }
 
 }
