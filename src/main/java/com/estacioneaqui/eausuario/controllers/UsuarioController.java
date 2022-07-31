@@ -14,7 +14,7 @@ import java.time.ZoneId;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
