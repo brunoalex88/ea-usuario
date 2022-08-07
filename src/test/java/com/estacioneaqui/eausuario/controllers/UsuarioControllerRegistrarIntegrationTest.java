@@ -50,4 +50,23 @@ class UsuarioControllerRegistrarIntegrationTest {
 
     }
 
+    @Test
+    void deveRetornar409_quandoUsuarioJaExistir() throws Exception {
+        UsuarioDto usuarioDto = UsuarioDto.builder()
+                .nome("Bruno")
+                .usuario("obruno")
+                .senha("123123")
+                .email("email@email")
+                .cpf("362.710.578-88")
+                .telefone("123").build();
+
+        String body = objectMapper.writeValueAsString(usuarioDto);
+
+        mockMvc.perform(post("/usuarios/registrar")
+                .content(body)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isConflict());
+
+    }
+
 }
